@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/line-numbers/prism-line-numbers.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/toolbar/prism-toolbar.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body
+    class="line-numbers"
+    data-prismjs-copy-timeout="500"
+    data-prismjs-copy="复制"
+    data-prismjs-copy-success="成功复制!"
+    data-prismjs-copy-error="复制失败,请使用ctrl+c"
+  >
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-toc@1.2.1/dist/docsify-plugin-toc.min.js"></script>
+    <script>
+      window.$docsify = {
+        name: "erpc",
+        repo: "https://github.com/daoif/erpc",
+        loadSidebar: true,
+        subMaxLevel: 9,
+        auto2top: true,
+
+        markdown: {
+          renderer: {
+            code: function (code, lang) {
+              let cc = document.createElement("code");
+              cc.textContent = code;
+              cc.setAttribute("class", "lang-" + lang);
+              return (
+                '<pre  data-lang="' +
+                lang +
+                '" class="line-numbers" tabindex="0" data-start="0">' +
+                cc.outerHTML +
+                "</pre>"
+              );
+            },
+          },
+        },
+        plugins: [
+          function (hook, vm) {
+            hook.doneEach(function (html) {
+              Prism.highlightAll();
+            });
+          },
+        ],
+      };
+    </script>
+
+    <!-- Docsify v4 -->
+  </body>
+</html>
