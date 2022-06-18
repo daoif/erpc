@@ -2,7 +2,7 @@
 
 # erpc
 
-erpc 是: [ 简单 (easy) | 对等 (equity) ] ,远程过程调用(rpc) 的简写.
+erpc 是: [ 简单 (easy) | 对等 (equity) ] ,远程过程调用(rpc) 的简写
 
 # 特性
 
