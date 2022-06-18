@@ -1,5 +1,5 @@
 - 入门
-  - [简介](readme.md)
+  - [简介](README.md)
   - [快速开始](quick-start.md)
   - [详解过程](detailed.md)
   - [模板](template.md)
