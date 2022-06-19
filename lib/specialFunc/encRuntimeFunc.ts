@@ -102,7 +102,7 @@ async function recurCIO(
     // console.log("递归完成,未成功链接,返回到 getCIO2.");
     return rb;
   }
-  console.log("callURL[n]:", callURL[n]);
+  console.log("尝试链接:callURL[" + n + "]:", callURL[n]);
   //这一句ioc,似乎传递出去以后,无效了,所以需要传递URL,而不是cio对象.
   //但connect_error,又似乎有重复的.似乎是添加到其末尾了,也就是说/
   //如果cio对象没有链接成功,则其监听,会被清空,但如果链接成功了,则可以保持.
@@ -116,11 +116,12 @@ async function recurCIO(
   _cioSocket = ioc(callURL[n]);
   rb = await new Promise((res) => {
     _cioSocket.on("connect_error", (e) => {
+      console.log("链接URL失败:", callURL[n], "将尝试链接下一URL成员");
       _cioSocket.close();
       res(recurCIO(n, callURL, _cioSocket, _vartion));
     });
     _cioSocket.on("connect", async () => {
-      console.log("链接生产端URL成功:", callURL[n], " 开始验证参数");
+      console.log("链接URL成功:", callURL[n], " 开始验证节点");
 
       let bool = await encInside.VerifyPSide(
         _cioSocket,

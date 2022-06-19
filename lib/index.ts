@@ -49,7 +49,7 @@ export let runConfig: UserConf;
 export let eUConf: EUserConf;
 //运行,需要传入一些必要的参数
 export async function Run(_runConfig: UserConf) {
-  console.log("Run成功!");
+  console.log("erpc启动成功!");
   //这里是初始化eUConf,不然后续赋值会报错.
   //(初始化给个空的就行.但又不能在申明处初始化,避免执行顺序问题.)
   eUConf = {};
@@ -59,7 +59,7 @@ export async function Run(_runConfig: UserConf) {
   await DepositUserConfig();
   //下面是运行,上面是配置的初始化.
   if (typeof eUConf.eUserS != "undefined") {
-    console.log("生产端开始运行");
+    console.log("生产端开始初始化");
     //生产接口运行
     wsServerRun();
   }
@@ -136,6 +136,7 @@ async function publicRun() {
   let regVar = eUConf.eUserP?.regCenter?.vartion;
   if (regVar?.URL) {
     if (regVar?.URL?.length > 0) {
+      console.log("注册中心开始链接");
       //此处链接注册中心.使用encRuntimeFunc里的getcio
       //返回一个url,手动注册cio对象,对注册中心消费api进行init
       let _url = await assCioSocket(regVar, false, encRc);
