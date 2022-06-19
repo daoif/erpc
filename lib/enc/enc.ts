@@ -21,7 +21,7 @@ export const encInside: IencInside = () => {};
  */
 encInside.VerifyPSide = async (cioSocket: iocSocket, _verify: Verify) => {
   if (cioSocket?.connected == undefined) {
-    console.log("消费端:生产端不在线, VerifyPSide 发送失败");
+    console.log("enc:生产端不在线, VerifyPSide 发送失败");
     return false;
   }
   let arg = _verify;
@@ -32,10 +32,10 @@ encInside.VerifyPSide = async (cioSocket: iocSocket, _verify: Verify) => {
       .timeout(1000)
       .emit("VerifyPSide", arg, (err: any, response: boolean) => {
         if (err) {
-          console.log("消费端:请求VerifyPSide,回调超时报错:", err);
+          console.log("enc:请求VerifyPSide,回调超时报错:", err);
           res(false);
         } else {
-          console.log("消费端:请求VerifyPSide,回调数据:", response);
+          console.log("enc:请求VerifyPSide,回调数据:", response);
           res(response);
         }
       });
