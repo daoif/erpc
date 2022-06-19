@@ -22,8 +22,9 @@ export async function getcio(_vartion: Vartion, isReg: boolean) {
   if (_vartion.URL) {
     callURL = _vartion.URL;
     console.log("enc:存在预设URL列表,尝试通过预设URL链接");
+    console.log("enc:预设URL列表:", _vartion.URL);
     _url = await getcio2(_vartion, callURL);
-    console.log("enc:_url:", _url);
+    // console.log("enc:_url:", _url);
   }
   //如果配置url返回一个可用的url,则此处应当返回,而不再继续尝试链接.
   if (_url != undefined) {
