@@ -21,6 +21,7 @@ export async function getcio(_vartion: Vartion, isReg: boolean) {
   //通过配置url链接尝试
   if (_vartion.URL) {
     callURL = _vartion.URL;
+    console.log("enc:存在预设URL列表,尝试通过预设URL链接");
     _url = await getcio2(_vartion, callURL);
     // console.log("enc:_url:", _url);
   }
@@ -32,6 +33,7 @@ export async function getcio(_vartion: Vartion, isReg: boolean) {
   //配置url无可用,尝试从注册中心获取url
   //如果允许从注册中心获取url,则尝试获取url,并进行链接尝试.
   if (isReg) {
+    console.log("enc:允许从注册中心请求URL列表,尝试通过动态URL链接");
     return await regGetcio(_vartion);
   } else {
     //如果不允许,则返回错误代码:-1.(无可用url)
@@ -54,7 +56,7 @@ export async function regGetcio(_vartion: Vartion) {
         (<typeof ty>_vartion[key]) = nvartion[key];
       }
     })();
-    console.log("enc:新的生产端URL列表:", _vartion.URL);
+    console.log("enc:新的生产端动态URL列表:", _vartion.URL);
     if (_vartion.URL) {
       callURL = _vartion.URL;
       _url = await getcio2(_vartion, callURL);
@@ -99,7 +101,7 @@ async function recurCIO(
   n++;
   //如果大于下标,则返回假
   if (callURL.length <= n) {
-    // console.log("enc:递归完成,未成功链接,返回到 getCIO2.");
+    console.log("enc:没有下一URL成员,结束本循环.");
     return rb;
   }
   console.log("enc:尝试链接:callURL[" + n + "]:", callURL[n]);
