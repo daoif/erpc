@@ -35,7 +35,7 @@ encInside.VerifyPSide = async (cioSocket: iocSocket, _verify: Verify) => {
           console.log("enc:请求VerifyPSide,回调超时报错:", err);
           res(false);
         } else {
-          console.log("enc:请求VerifyPSide,回调数据:", response);
+          // console.log("enc:请求VerifyPSide,回调数据:", response);
           res(response);
         }
       });

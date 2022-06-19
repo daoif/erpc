@@ -70,6 +70,7 @@ export async function Run(_runConfig: UserConf) {
   }
 
   if (typeof eUConf.eUserC != "undefined") {
+    console.log("消费端开始初始化");
     //消费接口运行
     wsclientRun();
   }
@@ -142,12 +143,13 @@ async function publicRun() {
       let _url = await assCioSocket(regVar, false, encRc);
       if (_url == 1) {
         //然后调用注册中心api,提交生产端口信息.
-        console.log(
-          "eUConf.eUserS?.vartion?.URL:",
-          eUConf.eUserS?.vartion?.URL
-        );
+
         //有生产端配置才上传,否则就只链接上注册中心,等待消费节点使用.
         if (eUConf.eUserS != undefined) {
+          console.log(
+            "emp:eUConf.eUserS?.vartion?.URL:",
+            eUConf.eUserS?.vartion?.URL
+          );
           // 3种情况,1查询到有,则不插入,但返回1.
           //  2查询到没有,插入,成功,返回2.
           //  3.其他报错,返回-1

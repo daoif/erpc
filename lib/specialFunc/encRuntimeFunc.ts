@@ -130,10 +130,11 @@ async function recurCIO(
       if (bool) {
         //如果为真,则无需递归,应当返回真
         // console.log("enc:参数验证成功.返回cio");
+        console.log("enc:节点验证通过,返回有效URL");
         _cioSocket.close();
         res(n);
       } else {
-        // console.log("enc:参数验证失败,继续递归.");
+        console.log("enc:节点验证失败,继续递归.");
         _cioSocket.close();
         res(recurCIO(n, callURL, _cioSocket, _vartion));
       }
@@ -156,7 +157,7 @@ export async function assCioSocket(
   if (typeof _url !== "number" && typeof _url !== "undefined") {
     console.log("enc:正式链接ioc");
     let _cioSocket = ioc(_url);
-    console.log("enc:_cioSocket.connected:", _cioSocket.connected);
+    // console.log("enc:_cioSocket.connected:", _cioSocket.connected);
     _enc(_cioSocket);
     on_connect_error(_cioSocket, _url, _vartion, _enc);
     return 1;

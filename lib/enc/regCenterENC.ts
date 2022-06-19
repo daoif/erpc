@@ -7,7 +7,7 @@ interface IEncRc {
 let cioSocket: iocSocket;
 //标准初始化,后续直接调cioSocket.
 export const encRc: IEncRc = (_cioSocket: iocSocket) => {
-  console.log("触发IEncRc");
+  // console.log("触发IEncRc");
   cioSocket = _cioSocket;
 };
 /**生产端口提交注册信息,注册中心消费api 内置于框架 */
