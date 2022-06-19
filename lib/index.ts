@@ -184,6 +184,7 @@ function wsclientRun() {
       }
 
       c.encUseList?.forEach(async (encitem) => {
+        console.log("enc:开始链接:", c.vartion!.NID);
         await assCioSocket(c.vartion!, isreg, encitem);
       });
     }
