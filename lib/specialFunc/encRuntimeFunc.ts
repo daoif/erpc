@@ -19,7 +19,7 @@ export async function getcio(_vartion: Vartion, isReg: boolean) {
   let _url: string | undefined = undefined;
 
   //通过配置url链接尝试
-  if (_vartion.URL) {
+  if (_vartion.URL && _vartion.URL.length > 0) {
     callURL = _vartion.URL;
     console.log("enc:存在预设URL列表,尝试通过预设URL链接");
     console.log("enc:预设URL列表:", _vartion.URL);
