@@ -22,7 +22,7 @@ export async function getcio(_vartion: Vartion, isReg: boolean) {
   if (_vartion.URL) {
     callURL = _vartion.URL;
     _url = await getcio2(_vartion, callURL);
-    console.log("enc:_url:", _url);
+    // console.log("enc:_url:", _url);
   }
   //如果配置url返回一个可用的url,则此处应当返回,而不再继续尝试链接.
   if (_url != undefined) {
@@ -153,9 +153,9 @@ export async function assCioSocket(
   _enc: enc
 ) {
   let _url = await getcio(_vartion, _isreg);
-  console.log("enc:assCioSocket _url:", _url);
+  // console.log("enc:assCioSocket _url:", _url);
   if (typeof _url !== "number" && typeof _url !== "undefined") {
-    console.log("enc:正式链接ioc");
+    console.log("enc:正式链接ioc", _url);
     let _cioSocket = ioc(_url);
     // console.log("enc:_cioSocket.connected:", _cioSocket.connected);
     _enc(_cioSocket);
