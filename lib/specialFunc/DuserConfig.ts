@@ -22,6 +22,10 @@ export async function Dport(_eusers: EUserS | undefined) {
 //将用户填入的生产配置转入到内部变量.
 //最后获取ip,url端口绑定.并输出到vartion的URL中.
 export async function DuserS(userS: UserS | undefined) {
+  //run时没有传入userS,则返回undefined,避免触发后续的初始化.
+  if (typeof userS == "undefined") {
+    return undefined;
+  }
   //返回值
   let euserS: EUserS = {
     //节点生产api列表
@@ -56,6 +60,10 @@ export function DuserP(userP: UserP | undefined) {
 
 //将用户填入的消费配置转入到内部变量.
 export function DuserC(userC: UserC | undefined) {
+  //run时没有传入userC,则返回undefined,避免触发后续的初始化.
+  if (typeof userC == "undefined") {
+    return undefined;
+  }
   //返回值
   let euserC: EUserC = {
     midEncUseList: userC?.midEncUseList,
